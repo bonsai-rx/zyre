@@ -29,6 +29,12 @@ namespace Bonsai.Zyre
         public string Group { get; set; }
 
         /// <summary>
+        /// Gets or sets the interface for the network.
+        /// </summary>
+        [Description("The local network group to join.")]
+        public string Interface { get; set; }
+
+        /// <summary>
         /// Creates a Zyre node that joins a network group and listens for events from other group peers.
         /// </summary>
         /// <returns>
@@ -56,6 +62,7 @@ namespace Bonsai.Zyre
                 NetMQZyre.Zyre zyre = new NetMQZyre.Zyre(Name);
                 zyre.Join(Group);
                 zyre.Start();
+                zyre.SetInterface(Interface);
 
                 if (source != null)
                 {
