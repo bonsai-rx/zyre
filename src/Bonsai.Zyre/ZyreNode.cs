@@ -31,7 +31,7 @@ namespace Bonsai.Zyre
         /// <summary>
         /// Gets or sets the interface for the network.
         /// </summary>
-        [Description("The local network group to join.")]
+        [Description("The local network interface to use for discovery.")]
         public string Interface { get; set; }
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace Bonsai.Zyre
             {
                 NetMQZyre.Zyre zyre = new NetMQZyre.Zyre(Name);
                 zyre.Join(Group);
-                zyre.Start();
                 zyre.SetInterface(Interface);
+                zyre.Start();
 
                 if (source != null)
                 {
